@@ -1,0 +1,116 @@
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
+@SpringBootApplication
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		//creacion lista con tallas de calcetines
+		List<String> listCacetin= new ArrayList<>();
+		listCacetin.add("9");
+		listCacetin.add("10");
+		listCacetin.add("20");
+		listCacetin.add("20");
+		listCacetin.add("10");
+		listCacetin.add("10");
+		listCacetin.add("30");
+		listCacetin.add("50");
+		listCacetin.add("10");
+		listCacetin.add("20");
+		
+		System.out.println("Ejercicion numero 1");
+		System.out.println("El numero de pares es: "+comercianteCalceltines(listCacetin));
+		
+		
+		
+		List<String> listVelas= new ArrayList<>();
+		listVelas.add("3");
+		listVelas.add("2");
+		listVelas.add("1");
+		listVelas.add("3");
+		
+		System.out.println("El numero de vealas apagadas es: "+velasCumpleanos(listVelas));
+	}
+//	entrada:
+//		calcetines: lista con tallas de calcetines
+//	metodo para contar catidad de pares de calcetin
+	public static int  comercianteCalceltines(List<String> calcetines) {
+		Map<String, Integer> cuentaPares = new HashMap<String, Integer>();
+		for (String calcetin:calcetines) {
+			if(cuentaPares.containsKey(calcetin)) {
+				cuentaPares.put(calcetin,cuentaPares.get(calcetin)+1);
+			}else {
+				cuentaPares.put(calcetin,1);
+			}
+			
+		}
+		
+		return contarPares(cuentaPares);
+	}
+//	Entrada :
+//		calcetines: map numero de calcetil y cantidad por talla
+//	Salida
+//		numPares:suma de todos los pares
+//	recibe arreglo de calcetines por talla y cantidad
+//	y se suma la cantidad de pares por cada talla hasta optener la cantidad total de pares
+// nota: para proximos cambios ya que estos estan ordenados por cantidad y talla se podria sacar la cantidad de pares por talla
+	public static int  contarPares(Map<String, Integer> calcetines) {
+		int numPares = 0;
+		 for (Map.Entry<String, Integer> calcetin :calcetines.entrySet()) {
+			 if(calcetin.getValue() >1) {
+				 numPares += calcetin.getValue()/2;
+			 }
+            
+        }
+		return numPares;
+	}
+	
+	public static void sumaNumeros() {
+		
+	}
+
+//	entrada:
+//		velas: lista con velas
+	
+//	metodo para contar catidad de velas por nivel
+public static int  velasCumpleanos(List<String> velas) {
+	Map<String, Integer> cuentaPares = new TreeMap<String, Integer>();
+	for (String vela:velas) {
+		if(cuentaPares.containsKey(vela)) {
+			cuentaPares.put(vela,cuentaPares.get(vela)+1);
+		}else {
+			cuentaPares.put(vela,1);
+		}
+		
+	}
+	
+	return contarPares(cuentaPares);
+}
+
+//	Entrada :
+//		velas: map numero de velas y cantidad por tamaño
+//
+//	Salida
+//		numvelas: retorna la catidad de velas mas repetida
+//
+//	recibe arreglo de velas tamaño y cantidad
+//	valida cual es el mayor tamaño de vela y trae la cantidad de velas de este tamaño
+public static int  contarVelas(Map<String, Integer> velas) {
+int numvelas = 0;
+ for (Map.Entry<String, Integer> vela :velas.entrySet()) {
+		 numvelas = vela.getValue();
+		 return numvelas;
+	 
+}
+ return numvelas;
+
+}
+}

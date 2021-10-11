@@ -1,0 +1,73 @@
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
+@SpringBootApplication
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		//creacion lista con tallas de calcetines
+		List<String> list= new ArrayList<>();
+		list.add("9");
+		list.add("10");
+		list.add("20");
+		list.add("20");
+		list.add("10");
+		list.add("10");
+		list.add("30");
+		list.add("50");
+		list.add("10");
+		list.add("20");
+		
+		System.out.println("Ejercicion numero 1");
+		System.out.println("El numero de pares es: "+comercianteCalceltines(list));
+	}
+//	entrada:
+//		calcetines: lista con tallas de calcetines
+//	metodo para contar catidad de pares de calcetin
+	public static int  comercianteCalceltines(List<String> calcetines) {
+		Map<String, Integer> cuentaPares = new HashMap<String, Integer>();
+		for (String calcetin:calcetines) {
+			if(cuentaPares.containsKey(calcetin)) {
+				cuentaPares.put(calcetin,cuentaPares.get(calcetin)+1);
+			}else {
+				cuentaPares.put(calcetin,1);
+			}
+			
+		}
+		
+		return contarPares(cuentaPares);
+	}
+//	Entrada :
+//		cuentaPares: map numero de calcetil y cantidad por talla
+//	Salida
+//		numPares:suma de todos los pares
+//	recibe arreglo de calcetines por talla y cantidad
+//	y se suma la cantidad de pares por cada talla hasta optener la cantidad total de pares
+// nota: para proximos cambios ya que estos estan ordenados por cantidad y talla se podria sacar la cantidad de pares por talla
+	public static int  contarPares(Map<String, Integer> cuentaPares) {
+		int numPares = 0;
+		 for (Map.Entry<String, Integer> par :cuentaPares.entrySet()) {
+			 if(par.getValue() >1) {
+				 numPares += par.getValue()/2;
+			 }
+            
+        }
+		return numPares;
+	}
+	
+	public static void sumaNumeros() {
+		
+	}
+	
+	public static void velasCumpleanos() {
+	
+}
+}
