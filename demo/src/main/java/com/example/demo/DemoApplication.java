@@ -150,7 +150,7 @@ public class DemoApplication {
 //		velas: map ordenado con numero de velas y cantidad por tamaño
 //
 //	Salida
-//		numvelas: retorna la catidad de velas mas repetida
+//		numvelas: retorna la catidad de velas de mayor tamaño
 //
 //	recibe arreglo ordenado de velas tamaño y cantidad
 //	guarda en numvelas el valor hasta llegar a la ultima posicion del map (posicion con la vela de mayor tamaño)
